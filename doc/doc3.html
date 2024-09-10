@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation de la Classe Creat_form</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000000;
+            color: #00ff00;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            color: #00ff00;
+        }
+
+        .code-block {
+            background-color: #003300;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            color: #00ff00;
+        }
+
+        .example {
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .highlight {
+            background-color: #333;
+            border: 1px solid #00ff00;
+            padding: 5px;
+            border-radius: 3px;
+            color: #00ff00;
+        }
+
+        .note {
+            background-color: #003300;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Documentation de la Classe <span class="highlight">Creat_form</span></h1>
+
+    <div class="note">
+        <h2>Description</h2>
+        <p>
+            La classe <code>Creat_form</code> permet de créer dynamiquement un formulaire HTML et d'ajouter des éléments à ce formulaire via du JavaScript intégré. Elle gère également la définition des attributs pour ces éléments et leur ajout dans un fichier PHP.
+        </p>
+    </div>
+
+    <h2>Propriétés de la Classe</h2>
+    <div class="code-block">
+        <code>
+            // Propriétés privées et publiques<br>
+            private $name_form;<br>
+            private $name_type;<br>
+            public $child_info = [];<br>
+            public $array_select_Atribut = [];<br>
+            public $nom_dossier;<br>
+            public $nom_fichier;<br>
+            public $path;
+        </code>
+    </div>
+
+    <h2>Méthodes de la Classe</h2>
+
+    <h3>1. <span class="highlight">__construct</span>($name_form, $name_type, $para)</h3>
+    <div class="code-block">
+        <code>
+            function __construct($name_form, $name_type, $para) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$this->name_form = $name_form;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$this->name_type = $name_type;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var name_form_parent = "<?php echo $this->name_form ?>";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var para = document.createElement("<?php echo $this->name_type ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;para.setAttribute("id", name_form_parent);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document<?php echo ($para == "") ? '.body.appendChild(para);' : '.getElementById("<?php echo $para ?>").appendChild(para);' ?><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+            }
+        </code>
+    </div>
+    <p>
+        Le constructeur initialise le formulaire avec un nom et un type d'élément HTML, puis crée et ajoute l'élément au DOM via du JavaScript.
+    </p>
+
+    <h3>2. <span class="highlight">select_Atribut_function</span>($test)</h3>
+    <div class="code-block">
+        <code>
+            function select_Atribut_function($test) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var list_id = [];<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var list_name = [];<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (var x = 0; x &lt; count($this->array_select_Atribut); x++) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var element1 = document.getElementById("<?php echo $this->array_select_Atribut[$x][0] ?>").id;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_id.push(element1);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_name.push("<?php echo $this->array_select_Atribut[$x][0] ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function input_1_onkeyup(_this) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const myTimeout_1 = setTimeout(myGreeting, 100);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function myGreeting() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (envoyer) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const myTimeout_2 = setTimeout(myGreeting_2, 550);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;envoyer = false;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function myGreeting_2() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;envoyer = true;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ok = new Information("<?php echo $this->path ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (var y = 0; y &lt; list_name.length; y++) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var input_valu = document.getElementById(list_name[y]).value;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok.add(list_name[y], input_valu);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(ok.info());<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok.push();<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (var xx = 0; xx &lt; list_id.length; xx++) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var talk = document.getElementById(list_id[xx]).value;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("001 : " + talk);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("002 : " + list_id[xx]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+            }
+        </code>
+    </div>
+    <p>
+        Cette méthode génère du code JavaScript pour gérer des événements de saisie et envoyer des informations via une instance de la classe <code>Information</code>. Elle collecte les valeurs des éléments du formulaire et les traite en fonction des événements déclenchés.
+    </p>
+
+    <h3>3. <span class="highlight">select_Atribut</span>($value, $nom_dossier, $nom_fichier)</h3>
+    <div class="code-block">
+        <code>
+            function select_Atribut($value, $nom_dossier, $nom_fichier) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for ($a = 0; $a &lt; count($this->child_info); $a++) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ($this->child_info[$a][1] == $value) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this->array_select_Atribut[] = array($this->child_info[$a][0], $this->child_info[$a][1]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$this->nom_dossier = $nom_dossier;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$this->nom_fichier = $nom_fichier;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$this->path = $nom_dossier . "/" . $nom_fichier;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if (!is_dir($nom_dossier)) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mkdir($nom_dossier, 0777, true);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$fichier = fopen($this->path, 'w');<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if ($fichier) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$contenu = "<?php\\n";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for ($xa = 0; $xa &lt; count($this->array_select_Atribut); $xa++) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$data_x = $this->array_select_Atribut[$xa][0];<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$contenu .='$' . $data_x . '=$_POST["' . $data_x . '"];\\n';<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$contenu .='echo $' . $data_x . ';\\n';<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$contenu .= "?>\\n";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;fwrite($fichier, $contenu);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;fclose($fichier);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;echo "Fichier créé/écrasé avec succès dans le dossier avec le contenu spécifié.";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo "Erreur lors de la création du fichier.";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }
+        </code>
+    </div>
+    <p>
+        Cette méthode permet de créer ou écraser un fichier PHP avec les données spécifiées. Elle vérifie si le dossier existe et le crée si nécessaire, puis écrit les valeurs des attributs dans le fichier.
+    </p>
+
+    <h3>4. <span class="highlight">add_child_array</span>($list_array)</h3>
+    <div class="code-block">
+        <code>
+            function add_child_array($list_array) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;for ($x = 0; $x &lt; count($list_array); $x++) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ($x == 0) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this->add_child($list_array[$x][0], $list_array[$x][1]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this->child_setAtribut($list_array[$x][0], $list_array[$x][1], $list_array[$x][2]);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }
+        </code>
+    </div>
+    <p>
+        Cette méthode permet d'ajouter des enfants au formulaire à partir d'un tableau. Le premier élément du tableau est ajouté en tant qu'enfant avec la méthode <code>add_child</code>, tandis que les autres éléments sont ajoutés avec des attributs via <code>child_setAtribut</code>.
+    </p>
+
+    <h3>5. <span class="highlight">add_child</span>($name, $type)</h3>
+    <div class="code-block">
+        <code>
+            function add_child($name, $type) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;$this->child_info[] = array($name, $type);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var para = document.createElement("<?php echo $type ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;para.setAttribute("id", "<?php echo $name ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("<?php echo $this->name_form ?>").appendChild(para);<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br>
+            }
+        </code>
+    </div>
+    <p>
+        Ajoute un enfant au formulaire en créant un élément HTML avec un ID et en l'ajoutant comme enfant de l'élément formulaire principal.
+    </p>
+
+    <h3>6. <span class="highlight">get_name_form</span>()</h3>
+    <div class="code-block">
+        <code>
+            function get_name_form() {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;return $this->name_form;<br>
+            }
+        </code>
+    </div>
+    <p>
+        Retourne le nom du formulaire.
+    </p>
+
+    <h3>7. <span class="highlight">child_setAtribut</span>($id, $name_atribute, $value_atribute)</h3>
+    <div class="code-block">
+        <code>
+            function child_setAtribut($id, $name_atribute, $value_atribute) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if ($name_atribute == "") {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("<?php echo $id ?>").innerHTML = "<?php echo $value_atribute ?>";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("<?php echo $id ?>").setAttribute("<?php echo $name_atribute ?>", "<?php echo $value_atribute ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }
+        </code>
+    </div>
+    <p>
+        Définit un attribut ou le contenu (innerHTML) d'un élément enfant du formulaire.
+    </p>
+
+    <h3>8. <span class="highlight">construct_setAtribut</span>($name_atribute, $value_atribute)</h3>
+    <div class="code-block">
+        <code>
+            function construct_setAtribut($name_atribute, $value_atribute) {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;if ($name_atribute == "") {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("<?php echo $this->name_form ?>").innerHTML = "<?php echo $value_atribute ?>";<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("<?php echo $this->name_form ?>").setAttribute("<?php echo $name_atribute ?>", "<?php echo $value_atribute ?>");<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            }
+        </code>
+    </div>
+    <p>
+        Définit un attribut ou le contenu (innerHTML) de l'élément parent (formulaire).
+    </p>
+
+    <hr>
+    <h2>Exemple d'utilisation</h2>
+    <div class="code-block">
+        <code>
+            &lt;?php<br>
+            // Inclure la classe Creat_form si elle est définie dans un autre fichier<br>
+            // require_once('Creat_form.php');<br>
+            <br>
+            // Créer une nouvelle instance de Creat_form<br>
+            $form = new Creat_form("monFormulaire", "form", "");<br>
+            <br>
+            // Ajouter un champ de texte (input) comme enfant du formulaire<br>
+            $form->add_child("nomInput", "input");<br>
+            <br>
+            // Ajouter un bouton de soumission (submit) comme enfant du formulaire<br>
+            $form->add_child("submitButton", "button");<br>
+            <br>
+            // Définir des attributs pour les éléments enfants<br>
+            $form->child_setAtribut("nomInput", "type", "text"); // Définit l'attribut type="text" pour l'input<br>
+            $form->child_setAtribut("nomInput", "placeholder", "Entrez votre nom"); // Définit l'attribut placeholder="Entrez votre nom"<br>
+            $form->child_setAtribut("submitButton", "", "Envoyer"); // Définit le contenu texte du bouton<br>
+            <br>
+            // Ajouter un attribut au formulaire principal<br>
+            $form->construct_setAtribut("method", "POST"); // Définit l'attribut method="POST" pour le formulaire<br>
+            <br>
+            ?&gt;
+        </code>
+    </div>
+    <p>
+        Cet exemple montre comment créer un formulaire avec un champ de texte et un bouton de soumission. Les attributs et les contenus des éléments sont définis à l'aide des méthodes fournies.
+    </p>
+</div>
+
+</body>
+</html>

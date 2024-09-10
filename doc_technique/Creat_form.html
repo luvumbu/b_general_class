@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique de la Classe Creat_form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+    <style>
+        /* Styles pour les boutons de copie */
+        .copy-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation Technique de la Classe <code>Creat_form</code></h1>
+
+    <h2>Description Générale</h2>
+    <p>
+        La classe <code>Creat_form</code> permet de générer dynamiquement des formulaires HTML et leurs éléments enfants 
+        via du code PHP et JavaScript. Elle inclut des méthodes pour ajouter des champs de formulaire, gérer les attributs 
+        des éléments HTML, et manipuler des fichiers associés, notamment pour stocker des configurations ou des interactions 
+        avec des bases de données.
+    </p>
+
+    <h2>Propriétés</h2>
+    <ul>
+        <li><strong><code>$name_form</code></strong> : Nom du formulaire.</li>
+        <li><strong><code>$name_type</code></strong> : Type d'élément HTML (ex. : 'form', 'div').</li>
+        <li><strong><code>$child_info</code></strong> : Tableau contenant les informations des éléments enfants.</li>
+        <li><strong><code>$array_select_Atribut</code></strong> : Tableau des attributs sélectionnés.</li>
+        <li><strong><code>$nom_dossier</code></strong> : Nom du dossier où le fichier est stocké.</li>
+        <li><strong><code>$nom_fichier</code></strong> : Nom du fichier à créer.</li>
+        <li><strong><code>$path</code></strong> : Chemin complet du fichier.</li>
+        <li><strong><code>$config_bool</code></strong> : Booléen pour la configuration.</li>
+        <li><strong><code>$path_config</code></strong> : Chemin vers le fichier de configuration.</li>
+        <li><strong><code>$bool_config</code></strong> : Booléen pour vérifier la configuration.</li>
+        <li><strong><code>$config_dbname</code></strong> : Nom de la base de données.</li>
+        <li><strong><code>$config_password</code></strong> : Mot de passe de la base de données.</li>
+        <li><strong><code>$databaseHandler_verif</code></strong> : Vérification du gestionnaire de base de données.</li>
+    </ul>
+
+    <h2>Méthodes</h2>
+
+    <h3><code>__construct($name_form, $name_type, $para)</code></h3>
+    <p>
+        Constructeur de la classe. Initialise le formulaire avec un nom et un type d'élément HTML, et génère le code JavaScript 
+        pour créer et ajouter l'élément HTML au DOM.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-construct">
+$monFormulaire = new Creat_form("monFormulaire", "form", "");
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-construct')">Copier le code</button>
+
+    <h3><code>add_child($name, $type)</code></h3>
+    <p>
+        Ajoute un élément enfant au formulaire en créant un nouvel élément HTML avec un ID et l'ajoutant comme enfant de l'élément formulaire principal.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-add_child">
+$monFormulaire->add_child("nomInput", "input");
+$monFormulaire->add_child("submitButton", "button");
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-add_child')">Copier le code</button>
+
+    <h3><code>child_setAtribut($id, $name_atribute, $value_atribute)</code></h3>
+    <p>
+        Définit un attribut spécifique ou le contenu (innerHTML) d'un enfant du formulaire.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-child_setAtribut">
+$monFormulaire->child_setAtribut("nomInput", "type", "text"); // Définit l'attribut type="text" pour l'input
+$monFormulaire->child_setAtribut("nomInput", "placeholder", "Entrez votre nom"); // Définit l'attribut placeholder="Entrez votre nom"
+$monFormulaire->child_setAtribut("submitButton", "", "Envoyer"); // Définit le contenu texte du bouton
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-child_setAtribut')">Copier le code</button>
+
+    <h3><code>construct_setAtribut($name_atribute, $value_atribute)</code></h3>
+    <p>
+        Définit un attribut ou le contenu de l'élément parent (formulaire).
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-construct_setAtribut">
+$monFormulaire->construct_setAtribut("method", "POST"); // Définit l'attribut method="POST" pour le formulaire
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-construct_setAtribut')">Copier le code</button>
+
+    <h3><code>select_Atribut($value, $nom_dossier, $nom_fichier)</code></h3>
+    <p>
+        Configure les attributs de sélection et crée un fichier PHP avec le contenu basé sur les attributs spécifiés.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-select_Atribut">
+$monFormulaire->select_Atribut("input", "nom_dossier", "nom_fichier.php");
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-select_Atribut')">Copier le code</button>
+
+    <h3><code>add_child_array($list_array)</code></h3>
+    <p>
+        Ajoute plusieurs éléments enfants à partir d'un tableau de valeurs.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-add_child_array">
+$monFormulaire->add_child_array([
+    ["nomInput", "input"],
+    ["submitButton", "button"]
+]);
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-add_child_array')">Copier le code</button>
+
+    <h3><code>select_Atribut_function()</code></h3>
+    <p>
+        Crée une fonction JavaScript pour gérer les attributs des éléments sélectionnés.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-select_Atribut_function">
+$monFormulaire->select_Atribut_function();
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-select_Atribut_function')">Copier le code</button>
+
+    <script>
+        function copyCode(id) {
+            var code = document.getElementById(id).innerText;
+            var textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+             
+        }
+    </script>
+</body>
+</html>
+
+
+<style>
+    /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    color: #333;
+}
+
+h1 {
+    color: #0056b3;
+}
+
+h2 {
+    color: #007bff;
+    margin-top: 20px;
+}
+
+h3 {
+    color: #17a2b8;
+}
+
+ul {
+    list-style-type: square;
+}
+
+pre {
+    background: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+code {
+    background: #f1f1f1;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+strong {
+    color: #333;
+}
+
+</style>

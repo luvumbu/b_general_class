@@ -1,0 +1,45 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #e0e0e0;
+ 
+
+  
+}
+#editor-container {
+
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+#toolbar {
+    background: #333;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#toolbar button, #toolbar select {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+#toolbar button:hover, #toolbar select:hover {
+    background: #555;
+}
+#editor {
+    padding: 20px;
+    min-height: 200px;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

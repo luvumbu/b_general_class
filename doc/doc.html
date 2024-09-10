@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation de la classe Creat_form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .method {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .method h3 {
+            margin-top: 0;
+        }
+
+        .note {
+            background-color: #ffffcc;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+        }
+
+        .example {
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-left: 5px solid #00acc1;
+        }
+
+        .note p,
+        .example p {
+            margin: 0;
+        }
+ 
+            .doc-button {
+           
+                border: 2px solid #00acc1;
+                color: #00acc1;
+                padding: 12px 28px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-family: 'Courier New', Courier, monospace;
+                border-radius: 5px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                cursor: pointer;
+                box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+
+                margin-top:150px ; 
+                margin-bottom:150px ; 
+
+            }
+    
+            .doc-button:hover {
+                background-color: #00acc1;
+                color: #1a1a1a;
+            }
+        </style>
+</head>
+
+<body>
+    <h1>Documentation de la classe <code>Creat_form</code></h1>
+    <p>La classe <code>Creat_form</code> permet de créer dynamiquement des formulaires HTML et leurs éléments enfants à
+        l'aide de PHP et de JavaScript. Cette documentation explique chaque méthode de la classe en détail pour les
+        débutants.</p>
+
+    <h2>Constructeur</h2>
+    <div class="method">
+        <h3><code>__construct($name_form, $name_type, $para)</code></h3>
+        <p>Le constructeur initialise un nouvel objet <code>Creat_form</code> en créant un élément HTML spécifié.</p>
+        <ul>
+            <li><code>$name_form</code> : Le nom et l'ID de l'élément formulaire.</li>
+            <li><code>$name_type</code> : Le type d'élément HTML à créer (ex : "form").</li>
+            <li><code>$para</code> : L'ID de l'élément parent où le formulaire sera inséré. Si vide, le formulaire est
+                ajouté directement au body.</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemple :</strong></p>
+            <pre><code>// Créer un formulaire avec ID 'monFormulaire' ajouté au body
+$form = new Creat_form("monFormulaire", "form", "");</code></pre>
+        </div>
+    </div>
+
+    <h2>Méthodes</h2>
+
+    <div class="method">
+        <h3><code>add_child($name, $type)</code></h3>
+        <p>Cette méthode ajoute un nouvel élément enfant au formulaire.</p>
+        <ul>
+            <li><code>$name</code> : L'ID de l'élément enfant à créer.</li>
+            <li><code>$type</code> : Le type de l'élément enfant (ex : "input", "button").</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemple :</strong></p>
+            <pre><code>// Ajouter un champ de texte avec l'ID 'nomInput'
+$form->add_child("nomInput", "input");</code></pre>
+        </div>
+    </div>
+
+    <div class="method">
+        <h3><code>child_setAtribut($id, $name_atribute, $value_atribute)</code></h3>
+        <p>Cette méthode permet de définir un attribut spécifique ou le contenu d'un élément enfant.</p>
+        <ul>
+            <li><code>$id</code> : L'ID de l'élément enfant cible.</li>
+            <li><code>$name_atribute</code> : Le nom de l'attribut à définir (ex : "type", "placeholder").</li>
+            <li><code>$value_atribute</code> : La valeur de l'attribut ou du contenu.</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemple :</strong></p>
+            <pre><code>// Définir l'attribut 'type' pour l'élément 'nomInput'
+$form->child_setAtribut("nomInput", "type", "text");
+
+// Définir un placeholder pour l'input
+$form->child_setAtribut("nomInput", "placeholder", "Entrez votre nom");</code></pre>
+        </div>
+    </div>
+
+    <div class="method">
+        <h3><code>construct_setAtribut($name_atribute, $value_atribute)</code></h3>
+        <p>Cette méthode définit un attribut pour l'élément parent (le formulaire).</p>
+        <ul>
+            <li><code>$name_atribute</code> : Le nom de l'attribut à définir.</li>
+            <li><code>$value_atribute</code> : La valeur de l'attribut.</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemple :</strong></p>
+            <pre><code>// Définir la méthode d'envoi du formulaire à POST
+$form->construct_setAtribut("method", "POST");</code></pre>
+        </div>
+    </div>
+
+    <div class="method">
+        <h3><code>add_child_array($list_array)</code></h3>
+        <p>Cette méthode permet d'ajouter plusieurs éléments enfants au formulaire en utilisant un tableau.</p>
+        <ul>
+            <li><code>$list_array</code> : Un tableau contenant les spécifications des éléments enfants.</li>
+        </ul>
+        <div class="example">
+            <p><strong>Exemple :</strong></p>
+            <pre><code>// Ajouter plusieurs éléments enfants au formulaire
+$form->add_child_array([
+    ["nomInput", "input"],
+    ["submitButton", "button"]
+]);</code></pre>
+        </div>
+    </div>
+
+    <h2>Exemple complet</h2>
+    <div class="example">
+        <p>Voici un exemple complet montrant comment utiliser cette classe pour créer un formulaire simple :</p>
+        <pre><code>&lt;?php
+// Créer un formulaire avec ID 'monFormulaire'
+$form = new Creat_form("monFormulaire", "form", "");
+
+// Ajouter un champ de texte (input) au formulaire
+$form->add_child("nomInput", "input");
+
+// Ajouter un bouton de soumission au formulaire
+$form->add_child("submitButton", "button");
+
+// Définir les attributs pour les enfants
+$form->child_setAtribut("nomInput", "type", "text");
+$form->child_setAtribut("nomInput", "placeholder", "Entrez votre nom");
+$form->child_setAtribut("submitButton", "", "Envoyer");
+
+// Définir la méthode d'envoi du formulaire
+$form->construct_setAtribut("method", "POST");
+?&gt;</code></pre>
+    </div>
+
+    <div class="note">
+        <p><strong>Note :</strong> Cette classe génère du code JavaScript pour créer et manipuler dynamiquement les
+            éléments HTML. Assurez-vous que JavaScript est activé dans le navigateur pour que ces fonctions
+            s'exécutent correctement.</p>
+    </div>
+
+
+    <a class="doc-button" href="doc2.html">
+        <div>
+            DOC 2 
+        </div>
+    </a>
+</body>
+
+</html>

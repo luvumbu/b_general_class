@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - CheckFileExists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #ccc;
+            overflow-x: auto;
+        }
+
+        .example {
+            background-color: #e7f3fe;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #2196F3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fonction CheckFileExists</h1>
+    <p>
+        La fonction <code>CheckFileExists</code> permet de vérifier si un fichier existe à un emplacement donné. 
+        Elle prend en paramètre le chemin du fichier et renvoie un booléen indiquant si le fichier est présent ou non.
+    </p>
+
+    <h2>Signature de la fonction</h2>
+    <pre>
+function CheckFileExists($filePath) {
+    if (file_exists($filePath)) {
+        return true; // Le fichier existe
+    } else {
+        return false; // Le fichier n'existe pas
+    }
+}
+    </pre>
+
+    <h2>Paramètre</h2>
+    <ul>
+        <li><code>$filePath</code> (string) : Chemin du fichier que vous voulez vérifier. Par exemple, <code>'/path/to/file.txt'</code>.</li>
+    </ul>
+
+    <h2>Valeur de retour</h2>
+    <ul>
+        <li>(bool) : <code>true</code> si le fichier existe, <code>false</code> sinon.</li>
+    </ul>
+
+    <h2>Fonctionnement</h2>
+    <p>
+        La fonction utilise <code>file_exists()</code>, une fonction native de PHP, pour vérifier si le fichier existe à l'emplacement spécifié.
+        Si le fichier est trouvé, la fonction retourne <code>true</code>, sinon elle retourne <code>false</code>.
+    </p>
+
+    <h2>Exemple d'utilisation</h2>
+    <div class="example">
+        <pre>
+$filePath = '/path/to/file.txt';
+
+if (CheckFileExists($filePath)) {
+    echo "Le fichier existe.";
+} else {
+    echo "Le fichier n'existe pas.";
+}
+        </pre>
+    </div>
+
+    <h2>Fonction native utilisée</h2>
+    <ul>
+        <li><code>file_exists(string $filePath)</code> : Vérifie si un fichier ou un dossier existe à l'emplacement spécifié.</li>
+    </ul>
+</body>
+
+</html>

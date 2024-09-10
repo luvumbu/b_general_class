@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - AsciiConverter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #ccc;
+            overflow-x: auto;
+        }
+
+        .example {
+            background-color: #e7f3fe;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #2196F3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Classe AsciiConverter</h1>
+    <p>
+        La classe <code>AsciiConverter</code> permet de convertir des chaînes de caractères en leur équivalent ASCII et inversement.
+        Elle utilise deux méthodes statiques :
+    </p>
+    <ul>
+        <li><code>asciiToString</code> pour convertir une chaîne de valeurs ASCII en chaîne de caractères.</li>
+        <li><code>stringToAscii</code> pour convertir une chaîne de caractères en valeurs ASCII.</li>
+    </ul>
+
+    <h2>Méthodes</h2>
+
+    <h3>1. asciiToString($asciiString)</h3>
+    <p>
+        Cette méthode convertit une chaîne de valeurs ASCII en une chaîne de caractères.
+    </p>
+
+    <h4>Paramètre :</h4>
+    <ul>
+        <li><code>$asciiString</code> (string) : Une chaîne de valeurs ASCII séparées par des virgules. Par exemple,
+            <code>"72,101,108,108,111"</code>.
+        </li>
+    </ul>
+
+    <h4>Retourne :</h4>
+    <ul>
+        <li>(string) : La chaîne de caractères correspondant aux valeurs ASCII. Par exemple, <code>"Hello"</code>.</li>
+    </ul>
+
+    <h4>Détails :</h4>
+    <p>
+        La méthode divise la chaîne <code>$asciiString</code> en un tableau de valeurs ASCII en supprimant les espaces inutiles.
+        Elle vérifie que chaque valeur est bien un nombre avant de la convertir en caractère via la fonction <code>chr()</code>.
+    </p>
+
+    <h4>Exemple d'utilisation :</h4>
+    <div class="example">
+        <pre>
+$asciiString = "72, 101, 108, 108, 111";
+echo AsciiConverter::asciiToString($asciiString); // Affiche "Hello"
+        </pre>
+    </div>
+
+    <h3>2. stringToAscii($string)</h3>
+    <p>
+        Cette méthode convertit une chaîne de caractères en valeurs ASCII.
+    </p>
+
+    <h4>Paramètre :</h4>
+    <ul>
+        <li><code>$string</code> (string) : Une chaîne de caractères à convertir en valeurs ASCII. Par exemple, <code>"Hello"</code>.
+        </li>
+    </ul>
+
+    <h4>Retourne :</h4>
+    <ul>
+        <li>(string) : Une chaîne de valeurs ASCII séparées par des virgules. Par exemple, <code>"72,101,108,108,111"</code>.</li>
+    </ul>
+
+    <h4>Détails :</h4>
+    <p>
+        La méthode parcourt chaque caractère de la chaîne <code>$string</code> et utilise la fonction <code>ord()</code> pour obtenir la valeur ASCII correspondante.
+        Les valeurs ASCII obtenues sont ensuite jointes avec des virgules pour former une chaîne.
+    </p>
+
+    <h4>Exemple d'utilisation :</h4>
+    <div class="example">
+        <pre>
+$string = "Hello";
+echo AsciiConverter::stringToAscii($string); // Affiche "72,101,108,108,111"
+        </pre>
+    </div>
+
+    <h2>Exemple d'utilisation complet :</h2>
+    <div class="example">
+        <pre>
+$asciiString = "72, 101, 108, 108, 111";
+$string = "Hello";
+
+// Conversion de ASCII à chaîne de caractères
+echo AsciiConverter::asciiToString($asciiString); // Affiche "Hello"
+
+// Conversion de chaîne de caractères à ASCII
+echo AsciiConverter::stringToAscii($string); // Affiche "72,101,108,108,111"
+        </pre>
+    </div>
+
+    <h2>Fonctions utilisées</h2>
+    <ul>
+        <li><code>chr(int $ascii)</code> : Convertit une valeur ASCII en caractère.</li>
+        <li><code>ord(string $char)</code> : Convertit un caractère en valeur ASCII.</li>
+        <li><code>explode(string $delimiter, string $string)</code> : Divise une chaîne de caractères en un tableau.</li>
+        <li><code>implode(string $glue, array $pieces)</code> : Joint les éléments d'un tableau en une chaîne de caractères, avec un séparateur.</li>
+        <li><code>trim(string $string)</code> : Supprime les espaces au début et à la fin.</li>
+    </ul>
+</body>
+
+</html>

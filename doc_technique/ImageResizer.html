@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+        pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 90%;
+        }
+        .btn-copy {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-copy:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Documentation Technique pour `ImageResizer`</h1>
+
+        <h2>Classe `ImageResizer`</h2>
+        <p>La classe <code>ImageResizer</code> est utilisée pour redimensionner des images tout en maintenant leur rapport d'aspect. Elle prend en charge les formats JPEG, GIF et PNG.</p>
+
+        <h3>Méthodes</h3>
+
+        <h4>Constructeur</h4>
+        <pre><code>public function __construct($filename)</code></pre>
+        <p><strong>Description:</strong> Charge l'image à partir du fichier spécifié et récupère ses dimensions.</p>
+        <p><strong>Paramètres:</strong></p>
+        <ul>
+            <li><code>$filename</code> (string): Le chemin du fichier image à charger.</li>
+        </ul>
+
+        <h4><code>load($filename)</code></h4>
+        <pre><code>private function load($filename)</code></pre>
+        <p><strong>Description:</strong> Charge l'image et récupère ses dimensions et son type.</p>
+        <p><strong>Paramètres:</strong></p>
+        <ul>
+            <li><code>$filename</code> (string): Le chemin du fichier image à charger.</li>
+        </ul>
+
+        <h4><code>resize($maxWidth, $maxHeight)</code></h4>
+        <pre><code>public function resize($maxWidth, $maxHeight)</code></pre>
+        <p><strong>Description:</strong> Redimensionne l'image tout en conservant le rapport d'aspect.</p>
+        <p><strong>Paramètres:</strong></p>
+        <ul>
+            <li><code>$maxWidth</code> (int): La largeur maximale souhaitée.</li>
+            <li><code>$maxHeight</code> (int): La hauteur maximale souhaitée.</li>
+        </ul>
+
+        <h4><code>save($filename, $imageType = IMAGETYPE_JPEG, $compression = 75, $permissions = null)</code></h4>
+        <pre><code>public function save($filename, $imageType = IMAGETYPE_JPEG, $compression = 75, $permissions = null)</code></pre>
+        <p><strong>Description:</strong> Sauvegarde l'image redimensionnée dans un fichier.</p>
+        <p><strong>Paramètres:</strong></p>
+        <ul>
+            <li><code>$filename</code> (string): Le chemin du fichier où l'image sera sauvegardée.</li>
+            <li><code>$imageType</code> (int): Le type d'image (par défaut JPEG).</li>
+            <li><code>$compression</code> (int): Le niveau de compression (pour JPEG).</li>
+            <li><code>$permissions</code> (int|null): Les permissions du fichier (optionnel).</li>
+        </ul>
+
+        <h4><code>output($imageType = IMAGETYPE_JPEG)</code></h4>
+        <pre><code>public function output($imageType = IMAGETYPE_JPEG)</code></pre>
+        <p><strong>Description:</strong> Affiche l'image directement dans le navigateur.</p>
+        <p><strong>Paramètres:</strong></p>
+        <ul>
+            <li><code>$imageType</code> (int): Le type d'image (par défaut JPEG).</li>
+        </ul>
+
+        <h4><code>__destruct()</code></h4>
+        <pre><code>public function __destruct()</code></pre>
+        <p><strong>Description:</strong> Libère la mémoire utilisée par l'image.</p>
+
+        <h2>Exemples d'Utilisation</h2>
+        <pre><code>&lt;?php
+// Création d'une instance de ImageResizer
+$resizer = new ImageResizer('path/to/image.jpg');
+
+// Redimensionnement de l'image
+$resizer->resize(800, 600);
+
+// Sauvegarde de l'image redimensionnée
+$resizer->save('path/to/resized_image.jpg');
+
+// Affichage de l'image directement dans le navigateur
+$resizer->output();
+?&gt;</code></pre>
+
+        <button class="btn-copy" onclick="copyCode()">Copier le Code</button>
+
+        <script>
+            function copyCode() {
+                const codeBlocks = document.querySelectorAll('pre code');
+                codeBlocks.forEach(block => {
+                    const range = document.createRange();
+                    range.selectNode(block);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    try {
+                        document.execCommand('copy');
+                        alert('Code copié dans le presse-papiers');
+                    } catch (err) {
+                        alert('Erreur lors de la copie du code');
+                    }
+                    window.getSelection().removeAllRanges();
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>

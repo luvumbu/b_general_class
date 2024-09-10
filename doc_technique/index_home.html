@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation Technique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      padding: 0;
+      color: #333;
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .code-block {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Documentation Technique du Code PHP</h1>
+
+  <div class="section">
+    <h2>Démarrage de la Session PHP</h2>
+    <div class="code-block">
+      <code>
+        &lt;?php<br>
+        // Démarre la session PHP pour conserver les données utilisateur entre les pages<br>
+        session_start();<br>
+        ?&gt;
+      </code>
+    </div>
+    <p><strong>Fonction:</strong> Cette ligne démarre une nouvelle session ou reprend une session existante. Cela permet de stocker des données utilisateur entre les pages, comme les identifiants de connexion.</p>
+  </div>
+
+  <div class="section">
+    <h2>Inclusion du Fichier JavaScript</h2>
+    <div class="code-block">
+      <code>
+        &lt;script src="js.js"&gt;&lt;/script&gt;
+      </code>
+    </div>
+    <p><strong>Fonction:</strong> Inclut le fichier JavaScript externe <code>js.js</code>. Ce script peut contenir des fonctionnalités de traitement côté client, comme la gestion des événements et les interactions avec le DOM.</p>
+  </div>
+
+  <div class="section">
+    <h2>Définition de la Structure HTML</h2>
+    <div class="code-block">
+      <code>
+        &lt;!DOCTYPE html&gt;<br>
+        &lt;html lang="fr"&gt;<br>
+        &lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+        &nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+        &nbsp;&nbsp;&lt;link rel="icon" type="image/x-icon" href="https://image.spreadshirtmedia.net/image-server/..."&gt;<br>
+        &nbsp;&nbsp;&lt;title&gt;Document&lt;/title&gt;<br>
+        &lt;/head&gt;<br>
+        &lt;body&gt;<br>
+        &nbsp;&nbsp;&lt;!-- Inclusion potentielle d'une feuille de style CSS (commentée) --&gt;<br>
+        &nbsp;&nbsp;&lt;!-- &lt;link rel="stylesheet" href="monFormulaire1.css"&gt; --&gt;<br>
+        &lt;/body&gt;<br>
+        &lt;/html&gt;
+      </code>
+    </div>
+    <p><strong>Détails:</strong></p>
+    <ul>
+      <li><strong>Déclaration HTML5:</strong> La déclaration <code>&lt;!DOCTYPE html&gt;</code> informe le navigateur qu'il s'agit d'un document HTML5.</li>
+      <li><strong>Langue:</strong> L'attribut <code>lang="fr"</code> spécifie que le document est en français.</li>
+      <li><strong>Encodage des Caractères:</strong> La balise <code>&lt;meta charset="UTF-8"&gt;</code> définit l'encodage des caractères en UTF-8, garantissant la bonne gestion des caractères spéciaux.</li>
+      <li><strong>Viewport:</strong> La balise <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> rend le site responsive, en s'adaptant à la largeur de l'appareil.</li>
+      <li><strong>Icône:</strong> La balise <code>&lt;link rel="icon" type="image/x-icon" href="..."&gt;</code> définit l'icône affichée dans l'onglet du navigateur.</li>
+      <li><strong>Titre:</strong> La balise <code>&lt;title&gt;</code> définit le titre de la page affiché dans l'onglet du navigateur.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Traitement PHP</h2>
+    <div class="code-block">
+      <code>
+        &lt;?php<br>
+        // Inclusion des fichiers de classe PHP nécessaires<br>
+        require_once 'class/Creat_form.php';<br>
+        require_once 'class/AsciiConverter.php';<br>
+        require_once 'class/chercherIndex.php';<br><br>
+
+        // Si la session n'est pas déjà active (l'utilisateur n'est pas connecté)<br>
+        if (!isset($_SESSION["session_log"])) {<br><br>
+
+        &nbsp;&nbsp;// Déclaration des variables de formulaire<br>
+        &nbsp;&nbsp;$label_1 = "label_1";<br>
+        &nbsp;&nbsp;$label_1_text = "Dbname"; // Texte pour le label 1<br>
+        &nbsp;&nbsp;$label_2_text = "Username"; // Texte pour le label 2<br><br>
+
+        &nbsp;&nbsp;// Déclaration des noms et événements pour les champs input<br>
+        &nbsp;&nbsp;$input_1 = "input_1";<br>
+        &nbsp;&nbsp;$input_1_onkeyup = $input_1 . "_onkeyup(this)";<br><br>
+
+        &nbsp;&nbsp;$label_2 = "label_2";<br>
+        &nbsp;&nbsp;$input_2 = "input_2";<br>
+        &nbsp;&nbsp;$input_2_onkeyup = $input_2 . "_onkeyup(this)";<br><br>
+
+        &nbsp;&nbsp;$btn = "btn";<br>
+        &nbsp;&nbsp;$btn2 = "xx";<br><br>
+
+        &nbsp;&nbsp;// Lien vers une fonctionnalité "Mot de passe oublié"<br>
+        &nbsp;&nbsp;$info___ = "Mot de passe oublié";<br>
+        &nbsp;&nbsp;$src_info = "http://google.com";<br><br>
+
+        &nbsp;&nbsp;// Création d'une nouvelle instance de formulaire<br>
+        &nbsp;&nbsp;$monFormulaire1 = new Creat_form("form_p_name", "form", "");<br><br>
+
+        &nbsp;&nbsp;// Ajout d'une feuille de style au formulaire<br>
+        &nbsp;&nbsp;$monFormulaire1->stylesheet("monFormulaire1.css");<br><br>
+
+        &nbsp;&nbsp;// Si la valeur est vide, l'élément est ajouté après le body, sinon l'identifiant est pris en compte<br>
+        &nbsp;&nbsp;$monFormulaire1->construct_setAtribut("class", "monFormulaire1");<br><br>
+
+        &nbsp;&nbsp;// Structure du label 1<br>
+        &nbsp;&nbsp;$monFormulaire1_label_1 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$label_1, "label"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$label_1, "", $label_1_text]<br>
+        &nbsp;&nbsp;];<br><br>
+
+        &nbsp;&nbsp;// Structure du champ input 1 avec placeholder et valeur par défaut "root"<br>
+        &nbsp;&nbsp;$monFormulaire1_input_1 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$input_1, "input"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$input_1, "placeholder", $label_1_text],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$input_1, "value", "root"]<br>
+        &nbsp;&nbsp;];<br><br>
+
+        &nbsp;&nbsp;// Structure du label 2<br>
+        &nbsp;&nbsp;$monFormulaire1_label_2 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$label_2, "label"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$label_2, "", $label_2_text]<br>
+        &nbsp;&nbsp;];<br><br>
+
+        &nbsp;&nbsp;// Structure du champ input 2 avec placeholder et valeur par défaut "root"<br>
+        &nbsp;&nbsp;$monFormulaire1_input_2 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$input_2, "input"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$input_2, "placeholder", $label_2_text],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$input_2, "value", "root"]<br>
+        &nbsp;&nbsp;];<br><br>
+
+        &nbsp;&nbsp;// Div contenant le lien "Mot de passe oublié"<br>
+        &nbsp;&nbsp;$monFormulaire1_div_1 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn2, "div"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn2, "", "&lt;a href='" . $src_info . "'&gt;" . $info___ . "&lt;/a&gt;"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn2, "class", "xx"]<br>
+        &nbsp;&nbsp;];<br><br>
+
+        &nbsp;&nbsp;// Div pour le bouton submit avec une action onclick<br>
+        &nbsp;&nbsp;$monFormulaire1_div_2 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn, "div"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn, "class", "submit"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn, "onclick", $input_1_onkeyup],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[$btn, "", "submit"]<br>
+        &nbsp;&nbsp;];<br><br>
+
+        &nbsp;&nbsp;// Ajout d'attributs au formulaire et ses enfants<br>
+        &nbsp;&nbsp;$monFormulaire1->select_Atribut("input", "select", "form_p_name.php");<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_label_1);<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_input_1);<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_label_2);<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_input_2);<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_div_1);<br><br>
+
+        &nbsp;&nbsp;// Si la vérification de la base de données est réussie<br>
+        &nbsp;&nbsp;if ($monFormulaire1->databaseHandler_verif == 1) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;$monFormulaire1_div_3 = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[$btn, "div"],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[$btn, "style", "background-color:blue;"]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;];<br>
+        &nbsp;&nbsp;}<br><br>
+
+        &nbsp;&nbsp;// Sauvegarde de la vérification de la base de données dans la session<br>
+        &nbsp;&nbsp;$_SESSION["path_config"] = $monFormulaire1->databaseHandler_verif;<br><br>
+
+        &nbsp;&nbsp;// Ajout du bouton submit et autres éléments au formulaire<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_div_2);<br>
+        &nbsp;&nbsp;$monFormulaire1->select_Atribut("input", "select", "form_p_name.php");<br>
+        &nbsp;&nbsp;$monFormulaire1->select_Atribut_function("input");<br>
+        &nbsp;&nbsp;$monFormulaire1->add_child_array($monFormulaire1_div_3);<br>
+        } else {<br>
+        // Si la session est déjà active, inclusion des fichiers pour la configuration et la gestion de session<br>
+        require_once 'class/path_config.php';<br>
+        require_once 'session_log.php';<br>
+        }<br>
+        ?&gt;
+      </code>
+    </div>
+    <p><strong>Détails:</strong></p>
+    <ul>
+      <li><strong>Inclusion des Classes PHP:</strong> Les fichiers de classe <code>Creat_form</code>, <code>AsciiConverter</code>, et <code>chercherIndex</code> sont inclus pour utiliser leurs fonctionnalités.</li>
+      <li><strong>Gestion de Session:</strong> Vérifie si la session <code>session_log</code> est active. Si non, un formulaire est créé. Si la session est active, les fichiers de configuration et de gestion de session sont inclus.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Styles CSS</h2>
+    <div class="code-block">
+      <code>
+        &lt;style&gt;<br>
+        &nbsp;&nbsp;.xx {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;padding: 10px;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;margin-top: 10px;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 10px;<br>
+        &nbsp;&nbsp;}<br><br>
+
+        &nbsp;&nbsp;.taille_img:hover,<br>
+        &nbsp;&nbsp;.user_log:hover {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+        &nbsp;&nbsp;}<br>
+        &lt;/style&gt;
+      </code>
+    </div>
+    <p><strong>Détails:</strong></p>
+    <ul>
+      <li><strong>Style pour le bouton 'xx':</strong> Définit le padding et les marges pour le bouton avec la classe <code>xx</code>.</li>
+      <li><strong>Style pour les éléments avec la classe <code>taille_img</code> et <code>user_log</code> lors du survol:</strong> Change le curseur en pointeur lorsqu'on survole ces éléments.</li>
+    </ul>
+  </div>
+
+</body>
+</html>

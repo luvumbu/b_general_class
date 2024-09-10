@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation CSS - Style Africain</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f3e1; /* Fond beige chaud */
+            color: #333;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #d94f2b; /* Rouge terre cuite */
+        }
+        code {
+            background-color: #898f31; /* Vert vibrant */
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #fff; /* Texte blanc pour contraste */
+            font-size: 1.1em;
+        }
+        pre {
+            background-color: #eef0a3; /* Vert foncé */
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #d94f2b; /* Bordure rouge terre cuite */
+            color: #fff;
+            font-size: 1em;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation CSS : Style Inspiré par l'Afrique</h1>
+
+    <p>Cette documentation explique la structure du CSS, les variables utilisées, et leur application pour styliser un formulaire avec des couleurs rappelant les paysages et les cultures africaines.</p>
+
+    <h2>1. Déclaration des Variables CSS</h2>
+    <p>Les variables CSS sont déclarées au niveau de la racine (<code>:root</code>) pour être accessibles dans tout le document. Les couleurs choisies s'inspirent des tons chauds et naturels présents en Afrique.</p>
+
+    <pre><code>:root {
+    --font-family: 'Arial', sans-serif;
+    --background-color-body: #f8f3e1; /* Beige chaud pour le fond */
+    --text-color-primary: #333333;
+    --background-color-form: #ffffff;
+    --border-color: #e0e0e0;
+    --label-color: #6b4226; /* Marron terreux pour les labels */
+    --input-border-color: #c4a484; /* Couleur sable pour les bordures */
+    --input-background-color: #f4f1e0; /* Beige clair pour les champs d'entrée */
+    --button-background-color: #d94f2b; /* Rouge terre cuite pour les boutons */
+    --button-hover-background-color: #b03d23; /* Rouge plus sombre au survol */
+    --button-text-color: #ffffff;
+    --link-color: #318f49; /* Vert vibrant pour les liens */
+    --link-hover-color: #276a34; /* Vert foncé au survol */
+    --font-weight-bold: 600;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --padding-standard: 12px;
+    --transition-standard: background-color 0.3s ease;
+}</code></pre>
+
+    <h2>2. Structure du CSS</h2>
+    <p>Le CSS est structuré en plusieurs sections, chacune s'occupant d'un aspect spécifique du style global de la page.</p>
+
+    <h3>2.1. Styles Globaux</h3>
+    <p>Les styles globaux appliqués au corps de la page définissent la police, les couleurs de fond et de texte, ainsi que le padding global.</p>
+
+    <pre><code>body {
+    font-family: var(--font-family);
+    background-color: var(--background-color-body);
+    color: var(--text-color-primary);
+    padding: 50px;
+    margin: 0;
+}</code></pre>
+
+    <h3>2.2. Styles du Formulaire</h3>
+    <p>Le formulaire est stylisé avec un fond blanc, des coins arrondis, une ombre douce et une bordure légère. Il est centré sur la page et utilise des couleurs inspirées de la nature.</p>
+
+    <pre><code>.monFormulaire1 {
+    background-color: var(--background-color-form);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border: 1px solid var(--border-color);
+}</code></pre>
+
+    <h3>2.3. Styles des Labels</h3>
+    <p>Les labels du formulaire sont en gras, avec une couleur marron terreux rappelant les sols africains, pour une meilleure lisibilité.</p>
+
+    <pre><code>.monFormulaire1 label {
+    font-weight: var(--font-weight-bold);
+    display: block;
+    margin-bottom: 8px;
+    color: var(--label-color);
+}</code></pre>
+
+    <h3>2.4. Styles des Champs d'Entrée</h3>
+    <p>Les champs d'entrée du formulaire sont stylisés avec des bordures couleur sable, des coins arrondis, et un fond beige clair. Le padding et la taille de la police sont définis pour une meilleure expérience utilisateur.</p>
+
+    <pre><code>.monFormulaire1 input {
+    width: 100%;
+    padding: var(--padding-standard);
+    margin-bottom: 20px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: var(--text-color-primary);
+    background-color: var(--input-background-color);
+}</code></pre>
+
+    <h3>2.5. Styles des Boutons</h3>
+    <p>Le bouton de soumission est rouge terre cuite avec un texte blanc, et change de couleur au survol pour un rouge plus sombre. Le bouton utilise une transition douce pour améliorer l'interaction utilisateur.</p>
+
+    <pre><code>.submit {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    border-radius: 5px;
+    padding: var(--padding-standard);
+    transition: var(--transition-standard);
+}
+
+.submit:hover {
+    background-color: var(--button-hover-background-color);
+}</code></pre>
+
+    <h3>2.6. Styles des Liens</h3>
+    <p>Les liens, comme le bouton "afficherInfos", sont colorés en vert vibrant rappelant la nature luxuriante, et deviennent d'un vert plus foncé au survol. Ils sont également soulignés au survol pour indiquer leur interactivité.</p>
+
+    <pre><code>#afficherInfos {
+    margin-top: 10px;
+    cursor: pointer;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+}
+
+#afficherInfos:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}</code></pre>
+
+    <h2>3. Conclusion</h2>
+    <p>Ce CSS est conçu pour évoquer l'esthétique africaine à travers l'utilisation de couleurs naturelles et vibrantes. Les variables permettent une modification rapide et cohérente des styles à travers l'ensemble du site, tout en conservant une identité visuelle forte et inspirée par l'Afrique.</p>
+</body>
+</html>

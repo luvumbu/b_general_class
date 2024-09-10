@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique de la Classe Data_send_class</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+    <style>
+        /* Styles pour les boutons de copie */
+        .copy-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles pour le message de confirmation */
+        .confirmation-message {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation Technique de la Classe <code>Data_send_class</code></h1>
+
+    <h2>Description Générale</h2>
+    <p>
+        La classe <code>Data_send_class</code> est utilisée pour gérer l'envoi de données à un serveur en utilisant une classe JavaScript 
+        nommée <code>Information</code>. Elle permet de stocker des paires de valeurs et d'envoyer ces données à l'aide d'un script 
+        JavaScript.
+    </p>
+
+    <h2>Propriétés</h2>
+    <ul>
+        <li><strong><code>$array_add</code></strong> : Tableau pour stocker les paires de valeurs à envoyer.</li>
+        <li><strong><code>$src_push</code></strong> : Source vers laquelle les données seront envoyées.</li>
+    </ul>
+
+    <h2>Méthodes</h2>
+
+    <h3><code>__construct($src_push)</code></h3>
+    <p>
+        Constructeur de la classe. Initialise la source pour l'envoi des données.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-construct">
+$dataSend = new Data_send_class("url_de_destination");
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-construct')">Copier le code</button>
+
+    <h3><code>voir($info)</code></h3>
+    <p>
+        Méthode pour examiner les informations fournies et ajouter celles correspondant à un type "input" au tableau des données à envoyer.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-voir">
+$dataSend->voir([
+    ["nomInput", "input"],
+    ["submitButton", "button"]
+]);
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-voir')">Copier le code</button>
+
+    <h3><code>set_array_add($var_nam, $value)</code></h3>
+    <p>
+        Ajoute une paire de valeurs au tableau des données à envoyer.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-set_array_add">
+$dataSend->set_array_add("nomInput", "input");
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-set_array_add')">Copier le code</button>
+
+    <h3><code>get_array_add()</code></h3>
+    <p>
+        Retourne le tableau des données à envoyer.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-get_array_add">
+$arrayAdd = $dataSend->get_array_add();
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-get_array_add')">Copier le code</button>
+
+    <h3><code>push_send_class()</code></h3>
+    <p>
+        Prépare et envoie les données à l'aide de la classe JavaScript <code>Information</code>.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-push_send_class">
+$dataSend->push_send_class();
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-push_send_class')">Copier le code</button>
+
+    <div id="confirmation-message" class="confirmation-message">
+        Code copié dans le presse-papiers !
+    </div>
+
+    <script>
+        function copyCode(id) {
+            var code = document.getElementById(id).innerText;
+            var textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            var message = document.getElementById('confirmation-message');
+            message.style.opacity = 1;
+            setTimeout(function() {
+                message.style.opacity = 0;
+            }, 2000); // Message visible pendant 2 secondes
+        }
+    </script>
+</body>
+</html>
+
+
+<style>
+    /* styles.css */
+
+/* Styles pour les boutons de copie */
+.copy-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles pour le message de confirmation */
+.confirmation-message {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+</style>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - chercherIndex</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #ccc;
+            overflow-x: auto;
+        }
+
+        .example {
+            background-color: #e7f3fe;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #2196F3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fonction chercherIndex</h1>
+    <p>
+        La fonction <code>chercherIndex</code> permet de trouver l'index ou la clé d'une valeur spécifique dans un tableau. 
+        Elle utilise la fonction native PHP <code>array_search</code> pour effectuer cette recherche.
+    </p>
+
+    <h2>Signature de la fonction</h2>
+    <pre>
+function chercherIndex($tableau, $valeur) {
+    $index = array_search($valeur, $tableau);
+
+    if ($index !== false) {
+        return $index;
+    } else {
+        return false;
+    }
+}
+    </pre>
+
+    <h2>Paramètres</h2>
+    <ul>
+        <li><code>$tableau</code> (array) : Le tableau dans lequel vous voulez rechercher la valeur.</li>
+        <li><code>$valeur</code> (mixed) : La valeur que vous souhaitez rechercher dans le tableau.</li>
+    </ul>
+
+    <h2>Valeur de retour</h2>
+    <ul>
+        <li>(int|string|bool) : Retourne l'index ou la clé de la valeur si elle est trouvée. Si la valeur n'est pas trouvée, la fonction retourne <code>false</code>.</li>
+    </ul>
+
+    <h2>Fonctionnement</h2>
+    <p>
+        La fonction <code>chercherIndex</code> utilise <code>array_search</code> pour rechercher la valeur dans le tableau. Si la valeur est trouvée, elle retourne l'index ou la clé. Si la valeur n'est pas trouvée, elle retourne <code>false</code>.
+    </p>
+
+    <h2>Exemple d'utilisation</h2>
+    <div class="example">
+        <pre>
+$tableau = array("pomme", "banane", "orange", "fraise");
+$valeur_a_chercher = "orange";
+
+$resultat = chercherIndex($tableau, $valeur_a_chercher);
+
+if ($resultat !== false) {
+    echo "L'index de '$valeur_a_chercher' est $resultat.";
+} else {
+    echo "'$valeur_a_chercher' n'a pas été trouvé dans le tableau.";
+}
+        </pre>
+    </div>
+
+    <h2>Fonction native utilisée</h2>
+    <ul>
+        <li><code>array_search(mixed $value, array $array)</code> : Recherche une valeur dans un tableau et retourne la première clé correspondante si trouvée. Retourne <code>false</code> si la valeur n'existe pas.</li>
+    </ul>
+</body>
+
+</html>

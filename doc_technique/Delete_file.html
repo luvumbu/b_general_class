@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique de la Fonction delete_file</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS -->
+    <style>
+        /* Styles pour les boutons de copie */
+        .copy-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles pour le message de confirmation */
+        .confirmation-message {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Documentation Technique de la Fonction <code>delete_file</code></h1>
+
+    <h2>Description Générale</h2>
+    <p>
+        La fonction <code>delete_file</code> permet de supprimer un fichier spécifié par son chemin. Elle vérifie si le fichier existe avant de tenter de le supprimer.
+    </p>
+
+    <h2>Fonction</h2>
+
+    <h3><code>delete_file($file_path)</code></h3>
+    <p>
+        Supprime le fichier situé à l'emplacement spécifié par <code>$file_path</code>.
+    </p>
+    <p><strong>Exemple d'utilisation :</strong></p>
+    <pre><code id="code-delete_file">
+$file_path = "path/to/your/file.txt";
+delete_file($file_path);
+    </code></pre>
+    <button class="copy-button" onclick="copyCode('code-delete_file')">Copier le code</button>
+
+    <div id="confirmation-message" class="confirmation-message">
+        Code copié dans le presse-papiers !
+    </div>
+
+    <script>
+        function copyCode(id) {
+            var code = document.getElementById(id).innerText;
+            var textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            var message = document.getElementById('confirmation-message');
+            message.style.opacity = 1;
+            setTimeout(function() {
+                message.style.opacity = 0;
+            }, 2000); // Message visible pendant 2 secondes
+        }
+    </script>
+</body>
+</html>
+
+
+
+<style>
+    /* styles.css */
+
+/* Styles pour les boutons de copie */
+.copy-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles pour le message de confirmation */
+.confirmation-message {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+</style>

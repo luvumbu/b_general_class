@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+ 
+        </head>
+    <title>Documentation de la classe Creat_form</title>
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+        /*
+            font-family: "Sofia", sans-serif;
+        */  
+        background-color: #0d0d0d;
+            color: #00ffcc;
+            margin: 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #00ffcc;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            border-bottom: 2px solid #00ffcc;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+
+        code {
+            background-color: #002b36;
+            color: #00ffcc;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 1.05em;
+        }
+
+        pre {
+            background-color: #002b36;
+            color: #00ffcc;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 1em;
+        }
+
+        .method {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-left: 5px solid #00ffcc;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .note {
+            background-color: #004d4d;
+            padding: 15px;
+            border-left: 5px solid #00e6ac;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .example {
+            background-color: #003333;
+            padding: 15px;
+            border-left: 5px solid #00997a;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .note p,
+        .example p {
+            margin: 0;
+        }
+
+        
+ 
+            .futuristic-button {
+                background-color: #00ffcc;
+                border: none;
+                color: #0d0d0d;
+                padding: 15px 30px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                font-family: 'Roboto Mono', monospace;
+                border-radius: 50px;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+                cursor: pointer;
+                box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+                margin-top:150px ; 
+                margin-bottom:150px ; 
+            }
+    
+            .futuristic-button:hover {
+                background-color: #00e6ac;
+                box-shadow: 0 0 20px #00ffcc, 0 0 30px #00e6ac, 0 0 40px #00e6ac;
+            }
+            
+        </style>
+</head>
+
+<body>
+    <h1>Documentation de la classe <code>Creat_form</code></h1>
+    <p>La classe <code>Creat_form</code> permet de créer dynamiquement des formulaires HTML et leurs éléments enfants à l'aide de PHP et de JavaScript. Cette documentation explique chaque méthode de la classe en détail, idéale pour les débutants en développement web.</p>
+
+    <h2>Constructeur</h2>
+    <div class="method">
+        <h3><code>__construct($name_form, $name_type, $para)</code></h3>
+        <p>Le constructeur initialise un nouvel objet <code>Creat_form</code> en créant un élément HTML spécifié.</p>
+        <ul>
+            <li><code>$name_form</code> : Le nom et l'ID de l'élément formulaire.</li>
+            <li><code>$name_type</code> : Le type d'élément HTML à créer (par exemple, <code>form</code>, <code>div</code>, <code>input</code>).</li>
+            <li><code>$para</code> : L'ID de l'élément parent où cet élément sera ajouté. Si vide, l'élément est ajouté directement au corps du document.</li>
+        </ul>
+    </div>
+
+    <h2>Méthodes</h2>
+
+    <div class="method">
+        <h3><code>add_child($name, $type)</code></h3>
+        <p>Ajoute un élément enfant au formulaire.</p>
+        <ul>
+            <li><code>$name</code> : L'ID de l'élément enfant.</li>
+            <li><code>$type</code> : Le type d'élément HTML pour l'enfant (par exemple, <code>input</code>, <code>label</code>).</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h3><code>child_setAtribut($id, $name_atribute, $value_atribute)</code></h3>
+        <p>Définit un attribut ou le contenu d'un élément enfant spécifique.</p>
+        <ul>
+            <li><code>$id</code> : L'ID de l'élément enfant.</li>
+            <li><code>$name_atribute</code> : Le nom de l'attribut à définir. Si vide, définit le contenu <code>innerHTML</code> de l'élément.</li>
+            <li><code>$value_atribute</code> : La valeur de l'attribut ou du contenu.</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h3><code>construct_setAtribut($name_atribute, $value_atribute)</code></h3>
+        <p>Définit un attribut ou le contenu de l'élément parent (le formulaire principal).</p>
+        <ul>
+            <li><code>$name_atribute</code> : Le nom de l'attribut à définir pour l'élément parent. Si vide, définit le contenu <code>innerHTML</code> de l'élément parent.</li>
+            <li><code>$value_atribute</code> : La valeur de l'attribut ou du contenu.</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h3><code>add_child_array($list_array)</code></h3>
+        <p>Ajoute un groupe d'éléments enfants au formulaire à partir d'un tableau d'instructions.</p>
+        <ul>
+            <li><code>$list_array</code> : Un tableau contenant les détails des éléments enfants à ajouter. Chaque sous-tableau doit suivre le format <code>[$id, $type, $attribut]</code>.</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h3><code>select_Atribut($value)</code></h3>
+        <p>Sélectionne les éléments enfants ayant un attribut spécifique.</p>
+        <ul>
+            <li><code>$value</code> : La valeur de l'attribut à rechercher parmi les éléments enfants.</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h3><code>select_Atribut_function($test)</code></h3>
+        <p>Crée une fonction JavaScript pour surveiller les interactions utilisateur sur les éléments sélectionnés et déclencher des actions spécifiques.</p>
+        <ul>
+            <li><code>$test</code> : Un paramètre pour tester et déclencher des actions basées sur les valeurs des attributs sélectionnés.</li>
+        </ul>
+    </div>
+
+    <h2>Exemple d'utilisation</h2>
+    <div class="example">
+        <pre><code>
+// Créer un nouveau formulaire
+$monFormulaire1 = new Creat_form("form_p_name", "form", "");
+
+// Définir un attribut pour le formulaire
+$monFormulaire1->construct_setAtribut("class", "monFormulaire1");
+
+// Ajouter des champs texte et des boutons au formulaire
+$monFormulaire1->add_child_array([
+    ["input_1", "input", "placeholder='Entrer votre nom'"],
+    ["submitButton", "button", "type='submit'"]
+]);
+
+// Sélectionner les éléments de type "input"
+$monFormulaire1->select_Atribut("input");
+
+// Ajouter une fonction de surveillance pour les éléments sélectionnés
+$monFormulaire1->select_Atribut_function("input");
+        </code></pre>
+    </div>
+
+<a href="doc4.html">
+        <div class="futuristic-button">
+REdirection
+    </div>
+</a>
+
+
+</body>
+
+</html>

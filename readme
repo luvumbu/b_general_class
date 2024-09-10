@@ -1,0 +1,124 @@
+Explication de l'exemple :
+Création du formulaire :
+
+L'exemple commence par créer une nouvelle instance de la classe Creat_form en appelant le constructeur avec les paramètres suivants :
+"monFormulaire" : Le nom du formulaire (sera utilisé comme id dans le HTML).
+"form" : Le type d'élément à créer (un formulaire HTML <form>).
+"" : Aucun parent spécifique n'est fourni, donc le formulaire sera ajouté directement au body.
+Ajout d'enfants au formulaire :
+
+add_child("nomInput", "input") ajoute un champ de texte (<input>) au formulaire avec id="nomInput".
+add_child("submitButton", "button") ajoute un bouton (<button>) au formulaire avec id="submitButton".
+Définir les attributs des éléments enfants :
+
+child_setAtribut("nomInput", "type", "text") définit l'attribut type="text" pour l'élément <input> avec id="nomInput".
+child_setAtribut("nomInput", "placeholder", "Entrez votre nom") définit un placeholder pour l'élément <input>.
+child_setAtribut("submitButton", "", "Envoyer") définit le contenu du bouton (texte visible) sur "Envoyer".
+Définir les attributs du formulaire :
+
+construct_setAtribut("method", "POST") définit l'attribut method="POST" pour le formulaire, indiquant que les données du formulaire seront envoyées via une requête POST.
+Résultat HTML généré :
+Ce code PHP génère le code HTML suivant lorsqu'il est exécuté dans un environnement avec PHP activé :
+
+html
+Copier le code
+<form id="monFormulaire" method="POST">
+    <input id="nomInput" type="text" placeholder="Entrez votre nom">
+    <button id="submitButton">Envoyer</button>
+</form>
+Comportement :
+Le formulaire est créé avec un champ de texte pour entrer un nom et un bouton pour soumettre le formulaire.
+Lorsque le bouton "Envoyer" est cliqué, le formulaire sera envoyé en utilisant la méthode POST.
+Vous avez dit :
+fais moi une doc
+ChatGPT a dit :
+ChatGPT
+Voici une documentation détaillée pour la classe Creat_form en PHP.
+
+Documentation de la classe Creat_form
+Description
+La classe Creat_form permet de créer dynamiquement des éléments HTML à partir de PHP et de les manipuler en utilisant du JavaScript intégré. Cette classe est particulièrement utile pour générer des formulaires et leurs éléments enfants de manière programmée.
+
+Propriétés
+$name_form (privée) : Stocke le nom (ou ID) du formulaire principal.
+$name_type (privée) : Stocke le type d'élément HTML à créer (par exemple, form).
+$child_info (publique) : Un tableau associatif contenant des informations sur les éléments enfants ajoutés au formulaire.
+Méthodes
+__construct($name_form, $name_type, $para)
+Description : Constructeur de la classe. Initialise le formulaire et génère le code HTML/JavaScript pour créer l'élément de formulaire.
+Paramètres :
+$name_form (string) : Nom ou ID du formulaire.
+$name_type (string) : Type d'élément HTML à créer (par exemple, form, div, section).
+$para (string) : ID de l'élément parent dans lequel le formulaire doit être inséré. Si vide, l'élément sera ajouté directement au body.
+Exemple d'utilisation :
+php
+Copier le code
+$form = new Creat_form("monFormulaire", "form", "");
+add_child($name, $type)
+Description : Ajoute un élément enfant au formulaire et génère le code JavaScript pour l'insérer dans le DOM.
+Paramètres :
+$name (string) : Nom ou ID de l'élément enfant.
+$type (string) : Type d'élément HTML à créer pour l'enfant (par exemple, input, button, div).
+Exemple d'utilisation :
+php
+Copier le code
+$form->add_child("nomInput", "input");
+child_setAtribut($id, $name_atribute, $value_atribute)
+Description : Définit un attribut spécifique ou le contenu d'un élément enfant du formulaire.
+Paramètres :
+$id (string) : ID de l'élément enfant à modifier.
+$name_atribute (string) : Nom de l'attribut à définir (par exemple, type, placeholder). Si vide, la valeur sera définie comme contenu (innerHTML) de l'élément.
+$value_atribute (string) : Valeur de l'attribut ou contenu à définir.
+Exemple d'utilisation :
+php
+Copier le code
+$form->child_setAtribut("nomInput", "type", "text");
+$form->child_setAtribut("nomInput", "placeholder", "Entrez votre nom");
+construct_setAtribut($name_atribute, $value_atribute)
+Description : Définit un attribut spécifique ou le contenu de l'élément principal (le formulaire lui-même).
+Paramètres :
+$name_atribute (string) : Nom de l'attribut à définir (par exemple, method, action). Si vide, la valeur sera définie comme contenu (innerHTML) de l'élément principal.
+$value_atribute (string) : Valeur de l'attribut ou contenu à définir.
+Exemple d'utilisation :
+php
+Copier le code
+$form->construct_setAtribut("method", "POST");
+get_name_form()
+Description : Retourne le nom ou ID du formulaire principal.
+Retour :
+string : Le nom ou ID du formulaire.
+Exemple d'utilisation :
+php
+Copier le code
+$form_name = $form->get_name_form();
+Exemple d'utilisation complet
+php
+Copier le code
+<?php
+// Création d'un formulaire dynamique
+$form = new Creat_form("monFormulaire", "form", "");
+
+// Ajout d'un champ de texte et d'un bouton de soumission
+$form->add_child("nomInput", "input");
+$form->add_child("submitButton", "button");
+
+// Définition des attributs des éléments enfants
+$form->child_setAtribut("nomInput", "type", "text");
+$form->child_setAtribut("nomInput", "placeholder", "Entrez votre nom");
+$form->child_setAtribut("submitButton", "", "Envoyer");
+
+// Définition des attributs du formulaire principal
+$form->construct_setAtribut("method", "POST");
+?>
+Résultat attendu
+Le code ci-dessus génère le HTML suivant :
+
+html
+Copier le code
+<form id="monFormulaire" method="POST">
+    <input id="nomInput" type="text" placeholder="Entrez votre nom">
+    <button id="submitButton">Envoyer</button>
+</form>
+Notes
+La classe Creat_form génère directement du JavaScript intégré dans le document HTML, ce qui peut être utile pour des interfaces dynamiques mais doit être utilisé avec précaution dans des environnements de production.
+Assurez-vous que les ID sont uniques dans le document HTML pour éviter les conflits de sélection dans le DOM.
